@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Add User</title>
+	{%load static%}
+	<link rel="stylesheet" href="{% static 'restful_user/css/bootstrap.css' %}">
+</head>
+<body>
+<div class="jumbotron">
+	<h1>Add a new user</h1>
+</div>
+<div class="container">
+	{% if messages%}
+		{% for message in messages %}
+		<ul>
+			<li>{{message}}</li>
+		</ul>
+		{% endfor %}
+	{% endif %}
+	<form action="/users/create" method="post">
+		{% csrf_token %}
+		<div class="form-group">
+			<label for="nameInput">First Name:</label>
+			<input type="text" name="fname">
+		</div>
+		<div class="form-group">
+			<label for="lastNameInput">Last Name:</label>
+			<input type="text" name="lname">
+		</div>
+		<div class="form-group">
+			<label class="emailInput">Email:</label>
+			<input type="Email" name="email">
+		</div>
+		<button type="submit" class="btn btn-primary">Create</button>
+	</form>
+	<a href="/">Go Back</a>
+</div>
+
+</body>
+</html>
